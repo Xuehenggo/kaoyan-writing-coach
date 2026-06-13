@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "level": "约9分",
+    "target": "20分",
+    "created": "2026-06-13",
+    "updated": "2026-06-13",
+    "total_sessions": 2
+  },
+  "difficulty": {
+    "sentence": "低",
+    "vocab": "低",
+    "logic": "低"
+  },
+  "topic": {
+    "current": "T2",
+    "rotation_next": "T3",
+    "history": ["T1", "T2"]
+  },
+  "error_stats": {
+    "C3": {
+      "total": 2,
+      "recent10": [1, 1],
+      "last_seen": "2026-06-13",
+      "zero_streak": 2,
+      "graduated": false,
+      "wrong_words": {
+        "more and more": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "a growing number of / an increasing number of"
+        },
+        "the appearance of this trend": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "this trend"
+        }
+      }
+    },
+    "G8": {
+      "total": 2,
+      "recent10": [1, 1],
+      "last_seen": "2026-06-13",
+      "zero_streak": 0,
+      "graduated": false,
+      "wrong_words": {}
+    },
+    "G2": {
+      "total": 2,
+      "recent10": [1, 1],
+      "last_seen": "2026-06-13",
+      "zero_streak": 0,
+      "graduated": false,
+      "wrong_words": {
+        "start": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "have started"
+        }
+      }
+    }
+  },
+  "training": {
+    "mode": "实战",
+    "target_code": null,
+    "pending_realcombat": false,
+    "graduated_list": [],
+    "current_deep_dive": {
+      "category": null,
+      "step": null,
+      "error_index": 0
+    }
+  },
+  "session_log": [
+    {
+      "date": "2026-06-13",
+      "topic": "T1",
+      "fatal": 3,
+      "general": 2,
+      "optimize": 0,
+      "codes": ["C3", "G2", "C3", "G8"],
+      "wrong_words_collected": ["more and more", "the appearance of this trend", "start"]
+    },
+    {
+      "date": "2026-06-13",
+      "topic": "T2",
+      "fatal": 1,
+      "general": 1,
+      "optimize": 0,
+      "codes": ["G8", "G2"],
+      "wrong_words_collected": []
+    }
+  ]
+}
