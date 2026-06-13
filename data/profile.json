@@ -4,7 +4,7 @@
     "target": "20分",
     "created": "2026-06-13",
     "updated": "2026-06-13",
-    "total_sessions": 2
+    "total_sessions": 3
   },
   "difficulty": {
     "sentence": "低",
@@ -19,7 +19,7 @@
   "error_stats": {
     "C3": {
       "total": 2,
-      "recent10": [1, 1],
+      "recent10": [1, 1, 0, 0, 0, 0],
       "last_seen": "2026-06-13",
       "zero_streak": 2,
       "graduated": false,
@@ -36,13 +36,105 @@
         }
       }
     },
-    "G8": {
-      "total": 2,
-      "recent10": [1, 1],
+    "G4": {
+      "total": 5,
+      "recent10": [1, 1, 1, 1, 1],
       "last_seen": "2026-06-13",
       "zero_streak": 0,
       "graduated": false,
-      "wrong_words": {}
+      "wrong_words": {
+        "phone (bare)": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "mobile phones / phones (plural generic)"
+        },
+        "platform (bare)": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "a platform"
+        },
+        "classroom (bare)": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "in the classroom / in modern classrooms"
+        },
+        "bike (bare)": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "riding a bike / riding bikes"
+        },
+        "life (bare)": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "a healthier life / healthier lives"
+        }
+      }
+    },
+    "L3": {
+      "total": 3,
+      "recent10": [1, 1, 1],
+      "last_seen": "2026-06-13",
+      "zero_streak": 0,
+      "graduated": false,
+      "wrong_words": {
+        "undivided": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "indispensable / essential"
+        },
+        "style (for transport)": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "means of transport / mode of transport"
+        },
+        "customs (for habits)": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "habits"
+        }
+      }
+    },
+    "G1": {
+      "total": 1,
+      "recent10": [1],
+      "last_seen": "2026-06-13",
+      "zero_streak": 0,
+      "graduated": false,
+      "wrong_words": {
+        "smart phone have": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "smart phone has"
+        }
+      }
+    },
+    "L1": {
+      "total": 1,
+      "recent10": [1],
+      "last_seen": "2026-06-13",
+      "zero_streak": 0,
+      "graduated": false,
+      "wrong_words": {
+        "Curiosty": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "Curiosity"
+        }
+      }
+    },
+    "M2": {
+      "total": 1,
+      "recent10": [1],
+      "last_seen": "2026-06-13",
+      "zero_streak": 0,
+      "graduated": false,
+      "wrong_words": {
+        "people'": {
+          "count": 1,
+          "last_seen": "2026-06-13",
+          "correction": "people's"
+        }
+      }
     },
     "G2": {
       "total": 2,
@@ -60,14 +152,15 @@
     }
   },
   "training": {
-    "mode": "实战",
+    "mode": "深挖",
     "target_code": null,
     "pending_realcombat": false,
     "graduated_list": [],
     "current_deep_dive": {
-      "category": null,
-      "step": null,
-      "error_index": 0
+      "category": "L3",
+      "step": "contrast",
+      "error_index": 2,
+      "total_errors": 2
     }
   },
   "session_log": [
@@ -88,6 +181,24 @@
       "optimize": 0,
       "codes": ["G8", "G2"],
       "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-13",
+      "topic": "T2",
+      "fatal": 2,
+      "general": 1,
+      "optimize": 0,
+      "codes": ["G4", "L3"],
+      "wrong_words_collected": ["phone (bare)", "undivided"]
+    },
+    {
+      "date": "2026-06-13",
+      "topic": "T2",
+      "fatal": 4,
+      "general": 4,
+      "optimize": 0,
+      "codes": ["G4", "G4", "L3", "L3", "G4", "G4", "G1", "L1", "M2"],
+      "wrong_words_collected": ["platform (bare)", "classroom (bare)", "bike (bare)", "life (bare)", "style (for transport)", "customs (for habits)", "smart phone have", "Curiosity", "people'"]
     }
   ]
 }
