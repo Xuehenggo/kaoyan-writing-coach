@@ -3,7 +3,8 @@
     "level": "约9分",
     "target": "20分",
     "created": "2026-06-13",
-    "updated": "2026-06-15"
+    "updated": "2026-06-15",
+    "total_sessions": 4
   },
   "difficulty": {
     "sentence": "低",
@@ -18,9 +19,9 @@
   "error_stats": {
     "C3": {
       "total": 6,
-      "recent10": [1, 1, 0, 0, 0, 0, 1, 1, 1, 0],
+      "recent10": [1, 1, 0, 0, 0, 0, 1, 1, 1],
       "last_seen": "2026-06-15",
-      "zero_streak": 1,
+      "zero_streak": 0,
       "graduated": false,
       "wrong_words": {
         "The factory's development": {
@@ -76,9 +77,9 @@
     },
     "G4": {
       "total": 13,
-      "recent10": [1, 1, 1, 1, 3, 0, 0, 1, 0, 0],
+      "recent10": [1, 1, 1, 1, 1, 1, 3, 0, 0, 1],
       "last_seen": "2026-06-15",
-      "zero_streak": 2,
+      "zero_streak": 0,
       "graduated": false,
       "wrong_words": {
         "smart phone (bare singular)": {
@@ -134,17 +135,12 @@
       }
     },
     "G8": {
-      "total": 3,
-      "recent10": [1, 1, 1],
-      "last_seen": "2026-06-15",
+      "total": 2,
+      "recent10": [1, 1],
+      "last_seen": "2026-06-14",
       "zero_streak": 0,
       "graduated": false,
       "wrong_words": {
-        "more likely cultivate": {
-          "count": 1,
-          "last_seen": "2026-06-15",
-          "correction": "are more likely to cultivate"
-        },
         "rely on handle": {
           "count": 1,
           "last_seen": "2026-06-14",
@@ -218,22 +214,12 @@
       }
     },
     "L1": {
-      "total": 9,
-      "recent10": [1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+      "total": 7,
+      "recent10": [1, 1, 1, 1, 1, 1, 1],
       "last_seen": "2026-06-15",
       "zero_streak": 0,
       "graduated": false,
       "wrong_words": {
-        "builing": {
-          "count": 1,
-          "last_seen": "2026-06-15",
-          "correction": "building"
-        },
-        "transportion": {
-          "count": 1,
-          "last_seen": "2026-06-15",
-          "correction": "transport"
-        },
         "Goverments": {
           "count": 1,
           "last_seen": "2026-06-15",
@@ -314,17 +300,12 @@
       }
     },
     "L2": {
-      "total": 3,
-      "recent10": [1, 1, 1],
+      "total": 2,
+      "recent10": [1, 1],
       "last_seen": "2026-06-15",
       "zero_streak": 0,
       "graduated": false,
       "wrong_words": {
-        "mainly (adv for adj)": {
-          "count": 1,
-          "last_seen": "2026-06-15",
-          "correction": "major / main"
-        },
         "environment (noun as adj)": {
           "count": 1,
           "last_seen": "2026-06-15",
@@ -372,13 +353,13 @@
     }
   },
   "training": {
-    "mode": "实战",
-    "target_code": null,
+    "mode": "深挖",
+    "target_code": "C3",
     "pending_realcombat": false,
     "graduated_list": [],
     "current_deep_dive": {
-      "category": null,
-      "step": null,
+      "category": "C3",
+      "step": "contrast",
       "error_index": 0
     }
   },
@@ -566,66 +547,6 @@
       "optimize": 1,
       "codes": ["C3", "C3", "G4"],
       "wrong_words_collected": ["The factory's development", "a growing number of people (for 人口增长)"]
-    },
-    {
-      "date": "2026-06-15",
-      "topic": "T4",
-      "fatal": 0,
-      "general": 1,
-      "optimize": 0,
-      "micro_target": "C3",
-      "codes": ["L2"],
-      "wrong_words_collected": ["mainly (adv for adj)"]
-    },
-    {
-      "date": "2026-06-15",
-      "topic": "T4",
-      "fatal": 1,
-      "general": 0,
-      "optimize": 0,
-      "micro_target": "L1",
-      "codes": ["L1"],
-      "wrong_words_collected": ["transportion"]
-    },
-    {
-      "date": "2026-06-15",
-      "topic": "T4",
-      "fatal": 0,
-      "general": 0,
-      "optimize": 0,
-      "micro_target": "L1",
-      "codes": [],
-      "wrong_words_collected": []
-    },
-    {
-      "date": "2026-06-15",
-      "topic": "T4",
-      "fatal": 2,
-      "general": 1,
-      "optimize": 1,
-      "source_sentence_id": "KYC-0075",
-      "codes": ["G4", "G8"],
-      "wrong_words_collected": ["the environmental awareness", "more likely cultivate"]
-    },
-    {
-      "date": "2026-06-15",
-      "topic": "T4",
-      "fatal": 0,
-      "general": 1,
-      "optimize": 0,
-      "micro_target": "G4",
-      "codes": ["L1"],
-      "wrong_words_collected": ["builing"]
-    },
-    {
-      "date": "2026-06-15",
-      "topic": "T4",
-      "fatal": 0,
-      "general": 0,
-      "optimize": 1,
-      "source_sentence_id": "KYC-0084",
-      "codes": [],
-      "wrong_words_collected": []
     }
   ]
 }

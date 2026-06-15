@@ -392,27 +392,6 @@ python scripts/query_sentences.py --stage "现象描述" -n 3 --json
 6. **易错陷阱** — 预设学生最可能踩的坑
 7. **核心词汇（可折叠）** — 默认隐藏
 
-**推荐输出结构**：
-
-```json
-{
-  "question_id": "KYC-U1-Q1",
-  "theme": "T1",
-  "chapter_tag": "现象描述",
-  "training_goal": "描述社会现象",
-  "chinese_prompt": "中文题干",
-  "reference_translation": "参考译文",
-  "source_sentence_id": "KYC-0005",
-  "source_chapter_tag": "2.1.1图画引入句DIY",
-  "examined_structure": "Depict 倒装 + 非限制性定语从句",
-  "transfer_note": "将源句的龙舟赛场景迁移为题目主题的对应场景，保留 Depicted in... 倒装结构，替换人物动作描述",
-  "error_traps": ["主谓一致：competitors...are", "定语从句引导词"],
-  "core_vocabulary": [
-    {"word": "depict", "pos": "v.", "meaning": "描绘", "level": "★★☆"}
-  ]
-}
-```
-
 ### 9. 最重要的 5 个改动点（相对于旧版）
 
 1. **主题库保留，但降级为内容方向控制器**（不再驱动出题）
@@ -513,16 +492,6 @@ python scripts/query_sentences.py --stage "现象描述" -n 3 --json
 | ↘ 降难度 | 单次致命错 ≥ 5 处，或某类错连续 2 次零进步 |
 | → 维持 | 致命错 2–4 处（学习区，别动它） |
 
-### 询问模板
-
-```
-📐 难度自检
- 当前：[句子复杂度: _ / 词汇挑战度: _ / 逻辑负载: _]
- 检测：____（基于致命错趋势的数据依据）
- 建议：____（指明可调的具体维度）
- 你定：(A) 不调  (B) 升某维度  (C) 降某维度  (D) 手动指定
-```
-
 升降对称，降难度不带失败暗示。
 
 ---
@@ -577,14 +546,6 @@ python scripts/query_sentences.py --stage "现象描述" -n 3 --json
 
 在**包含某类别靶向题**的练习中，该类别连续 5 次零犯错 → 从弱点雷达移除并给正反馈。未考到该类别的练习不计入通过计数。
 
-### 推送优先级计算（仅用于出题前的弱点排序）
-
-```
-推送分 = 频次 × 严重度权重 × 时效 × 攻克性
-严重度权重: ! = 3, ° = 1.5, ~ = 0.5
-攻克性: 机械错（G1/G3/G4/M类）给高权重，优先拿下（低投入高回报）
-```
-
 ---
 
 ## 模块七：学习档案管理（持久化）
@@ -601,8 +562,7 @@ python scripts/query_sentences.py --stage "现象描述" -n 3 --json
 {
   "meta": {
     "level": "约9分", "target": "20分",
-    "created": "YYYY-MM-DD", "updated": "YYYY-MM-DD",
-    "total_sessions": 0
+    "created": "YYYY-MM-DD", "updated": "YYYY-MM-DD"
   },
   "difficulty": {
     "sentence": "中", "vocab": "低", "logic": "低"
@@ -698,8 +658,6 @@ python scripts/query_sentences.py --stage "现象描述" -n 3 --json
 - `difficulty` 默认低 / 低 / 低
 - `topic.current` 从 T1 起
 - `training.mode` 默认 `实战`
-- `meta.total_sessions` 默认 0
-
 读取或创建后，必须在检查目录中体现：
 
 ```text
@@ -726,7 +684,7 @@ python scripts/query_sentences.py --stage "现象描述" -n 3 --json
    - 每个错误类别下的 wrong_words 按 count 降序排列
 4. 本次**靶向考察了但未犯**的编码 → `zero_streak +1`（仅当本次确实练到该点才 +1，没考到不动 — 严格版毕业判定）
 5. 检查 `zero_streak >= 5` 的类别 → 设 `graduated: true`，加入 `graduated_list`，从主推送序列移除，并给学生正反馈
-6. push 一条记录进 `session_log`（含 `wrong_words_collected`），更新 `meta.updated` 与 `meta.total_sessions`
+6. push 一条记录进 `session_log`（含 `wrong_words_collected`），更新 `meta.updated`
 
 **③ 深挖流程关键节点 → 必须写**
 
@@ -746,13 +704,6 @@ python scripts/query_sentences.py --stage "现象描述" -n 3 --json
 - 出题前：读 `difficulty`（定难度）、`topic`（定主题）、`error_stats`（设针对性陷阱）
 - 推送前：读 `error_stats` 算推送分，读 `graduated_list` 排除已毕业类别
 - 实战回归前：读 `training.pending_realcombat`，为 `true` 则自动安排
-
-### 数据一致性自检（每次写前快速核对）
-
-- `recent10` 长度 ≤ 10
-- 已 `graduated` 的码不应再出现在主推送
-- `zero_streak` 与 `last_seen` 逻辑一致（本次犯了该错，streak 必须为 0）
-- 写入失败或文件损坏 → 告知学生，用 `session_log` 尝试重建，不静默丢数据
 
 ---
 
