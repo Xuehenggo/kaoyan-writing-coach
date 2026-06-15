@@ -620,11 +620,52 @@ English Practice Mode｜英语练习模式
 
 ---
 
+## 模块八：作文模板系统
+
+本 skill 内置一套完整的考研英语一大作文模板体系（源自专业作文模板教材，123 页），按四大模块拆分存入 `references/` 目录，智能体在教学过程中按需调用。
+
+### 模板文件索引
+
+| 文件 | 内容 | 大小 | 适用场景 |
+|:---|:---|:---|:---|
+| `references/template-methodology.md` | 备考方法论：大纲说明、题目要求、评分标准、审题构思、考场提醒、模板使用指南 | 21 KB | 出题前确认方向、批改时对照评分标准、学生询问备考策略 |
+| `references/template-diy.md` | 内容三段论 DIY：首段/第二段/第三段逐句搭建方法（Depict 倒装、数据描述、论点 DIY、衔接词、长难句技巧） | 68 KB | 教学生搭建句子、生成参考译文、回答"这句怎么写"类问题 |
+| `references/template-library.md` | 模板库：图画类/文字类/图表类（动态+静态）/混合类成品模板 | 36 KB | 学生要求模板示范、出题时参考题型格式、生成范文 |
+| `references/template-model-essays.md` | 真题范文精析：2000–2025 年真题范文+主题词+点评 | 75 KB | 示范讲解、出真题模拟、学生要求看范文 |
+
+### 调用规则
+
+1. **默认不主动加载**：模板文件较大（合计约 200 KB），不随 skill 触发自动读入。仅在需要时用 Read 工具按需读取相关段落。
+2. **出题时**：先确定题型（图画/图表/文字/混合），再扫一眼 `template-methodology.md` 确认评分标准和审题要求，最后参考 `template-diy.md` 中对应段落的 DIY 句式生成参考译文。
+3. **批改时**：对照 `template-methodology.md` 中的评分标准（第五档~第一档）给出分数段位。
+4. **教写作时**：从 `template-diy.md` 中提取对应句型的 DIY 方法教学生搭建句子。
+5. **学生要模板时**：从 `template-library.md` 中提取对应题型的成品模板。
+6. **示范讲解时**：从 `template-model-essays.md` 中找与当前主题相近的真题范文作为参考。
+7. **词汇守界**：模板中的词汇同样受 5500 词约束，使用 `scripts/vocab_check.py` 验证。
+
+### 模板与学生水平适配
+
+| 学生水平 | 模板使用策略 |
+|:---|:---|
+| 9–12 分（三档） | 优先使用模板库（`template-library.md`）成品模板，确保格式正确、无低级错误 |
+| 13–16 分（四档） | 引导使用 DIY 方法（`template-diy.md`），在模板基础上替换个性化语料 |
+| 17–20 分（五档） | 仅用 DIY 方法理解句子功能，鼓励脱离模板、自由组合高级句式 |
+
+### 核心铁律补充
+
+6. **模板参谋不灌输**：模板是工具不是答案。当学生说「我不会写第一段」时，先引导他用 DIY 方法（`template-diy.md`）自己搭建，再给参考；不要直接甩成品模板。
+
+---
+
 ## 参考资源
 
 - `references/error-codes.md` — 完整的 25 子类错误编码表（含示例）
 - `references/vocab-5500.md` — 词汇守界规则与六大主题高频词汇速查表
 - `references/vocab-5500-full.md` — 5493 词完整词表（A–Z 分组）
+- `references/template-methodology.md` — 备考方法论（大纲、评分、审题、考场策略）
+- `references/template-diy.md` — 内容三段论 DIY 搭建指南（逐句教学）
+- `references/template-library.md` — 模板库（图画/图表/文字/混合类成品模板）
+- `references/template-model-essays.md` — 2000–2025 真题范文精析
 - `scripts/vocab_check.py` — 自动判词脚本，秒级返回词是否在 5500 表内
 
 ### 判词脚本用法
