@@ -193,6 +193,7 @@ def main():
     parser.add_argument("--limit", "-n", type=int, default=5, help="返回数量 (默认 5)")
     parser.add_argument("--json", action="store_true", help="JSON 输出")
     parser.add_argument("--tags", help="JSON 格式标签查询")
+    parser.add_argument("--quick", "-q", action="store_true", help="快速模式：每行输出一条推荐句（id|EN|CN）")
 
     args = parser.parse_args()
 
@@ -212,10 +213,23 @@ def main():
             limit=args.limit,
         )
 
-    if args.json:
+    if args.quick:
+        _print_quick(results)
+    elif args.json:
         print(json.dumps(results, ensure_ascii=False, indent=2))
     else:
         _print_readable(results)
+
+
+def _print_quick(results):
+    """快速模式：每行 id|EN|CN，方便 Agent 直接使用"""
+    if not results:
+        print("(无匹配结果)")
+        return
+    for s in results:
+        en = s['clean_sentence'].replace('\n', ' ').replace('|', '/')
+        cn = s.get('translation', '').replace('\n', ' ').replace('|', '/')
+        print(f"{s['id']}|{en}|{cn}")
 
 
 def _print_readable(results):
