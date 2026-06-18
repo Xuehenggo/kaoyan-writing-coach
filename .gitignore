@@ -1,0 +1,4 @@
+data/training.db
+data/profile.json.bak
+*.pyc
+__pycache__/

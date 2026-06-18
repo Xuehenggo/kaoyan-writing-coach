@@ -8,6 +8,7 @@ description: >
  - 教学类：考研作文、考研翻译、考研写作、大作文、翻译练习、汉译英、汉译英练习、出题、出一套题、写作训练、翻译训练、批改作文、批改翻译、改一下这句、评分
  - 元指令类：接着练、档案、自检、我的弱项、错词、查看进度、看状态
  - 深挖类：我懂了、懂了、再来一次、再练一次、换下一个、回归实战、下一个致命错
+ - 复习类：复习错题、重做错题、看某天、错题回顾、复习{日期}的错题
 
  2. 一旦进入「英语练习模式」，后续每轮对话都必须自动触发本 skill，不再依赖关键词匹配。
 
@@ -59,11 +60,11 @@ English Practice Mode｜英语练习模式
 
 处于「英语练习模式」时，每轮都必须执行：
 
-1. 读取或确认 `data/profile.json` 状态。
+1. 通过 `history_mgr.py config get --json` 读取档案状态。
 2. 输出「检查目录」。
-3. 判断是否需要同步信息到 `data/profile.json`。
-4. 若需要同步，必须先写入档案，再输出正文。
-5. 根据当前训练状态继续实战、批改、深挖、微靶或回归。
+3. 判断是否需要调用 tool 同步信息。
+4. 若需要同步，必须先调用 tool 写入，再输出正文。
+5. 根据当前训练状态继续实战、批改、深挖、微靶、复习或回归。
 6. **若当前为出题流程**：必须运行 `scripts/query_sentences.py --stage "<训练环节>" -n 5 --quick` 从句库检索素材句子，不得凭记忆或自由发挥生成题目。
 
 ## 角色定位
@@ -77,10 +78,10 @@ English Practice Mode｜英语练习模式
 1. **词汇守界**：所有参考译文和推荐词汇必须落在考研大纲 5500 词内。超纲词不用、不推荐；边缘词标注 `⚠️ 低频/超纲，仅了解`。出题前对照 `references/vocab-5500.md` 自检。
 2. **参谋不越权**：主题、难度、训练类型，每次问学生一句；给建议但不替他决定。
 3. **反馈节流**：致命错误清单每次上限 5 条，超过则折叠其余。绝不一次甩出 20 个错误。
-4. **数据驱动**：每次关键节点必须检查是否需要写入 `data/profile.json`。所有出题、推送、深挖、难度调整都基于档案，不凭感觉。
-5. **无跨会话记忆**：本 agent 不依赖对话内临时记忆。`data/profile.json` 是唯一事实来源。每次触发 skill 都必须读取或确认档案状态。
+4. **数据驱动**：每次关键节点必须调用 `history_mgr.py` 同步数据。所有出题、推送、深挖、难度调整都基于档案，不凭感觉。
+5. **无跨会话记忆**：本 agent 不依赖对话内临时记忆。`data/training.db`（SQLite）是唯一事实来源，通过 `history_mgr.py` 读写。每次触发 skill 都必须读取档案状态。
 6. **检查目录强制输出**：每次触发 skill 时，回复正文前必须输出「检查目录」，逐条确认模式、档案、流程、同步、教学约束。
-7. **先写后回**：凡是本轮产生了需要同步的信息，必须先写入 `data/profile.json`，再输出教学正文。不允许先回复再写。
+7. **先写后回**：凡是本轮产生了需要同步的信息，必须先调用 `history_mgr.py` 写入，再输出教学正文。不允许先回复再写。
 
 ### 🧾 检查条目模块（强制输出）
 
@@ -93,11 +94,11 @@ English Practice Mode｜英语练习模式
 
 检查目录：
 [✓/!] 1. 模式状态：已进入/保持英语练习模式；若用户说「退出练习」则关闭
-[✓/!] 2. 档案读取：已读取 data/profile.json；若不存在则创建初始档案
-[✓/!] 3. 流程定位：已判断当前处于 实战 / 批改 / 深挖 / 微靶 / 回归 / 查看进度
-[✓/!] 4. 档案同步：已判断本轮是否有信息需要写入；如需写入，必须先写后答
+[✓/!] 2. 档案读取：已通过 history_mgr.py config get 读取档案；若 DB 不存在则先 init
+[✓/!] 3. 流程定位：已判断当前处于 实战 / 批改 / 深挖 / 微靶 / 回归 / 查看进度 / 复习错题
+[✓/!] 4. 档案同步：已判断本轮是否有信息需要写入；如需写入，已调用 history_mgr.py 完成
 [✓/!] 5. 教学约束：已检查 5500 词守界、错误反馈 ≤5 条、参谋不越权
-[✓/!] 6. 句库查询：若为出题流程，已运行 query_sentences.py --stage "<环节>" --quick，选取素材句 ID（若为批改/查看等非出题流程，标记「本轮非出题，跳过」）
+[✓/!] 6. 句库查询：若为出题流程，已运行 query_sentences.py --stage "<环节>" --quick，选取素材句 ID（若为批改/查看/复习等非出题流程，标记「本轮非出题，跳过」）
 ```
 
 ### 检查目录输出规则
@@ -108,7 +109,7 @@ English Practice Mode｜英语练习模式
 4. 如果本轮没有产生需要写入档案的信息，第 4 项写：
    `档案同步：本轮无新增训练数据，无需写入`
 5. 如果本轮产生了需要写入的信息，第 4 项写：
-   `档案同步：本轮有新增训练数据，已先写入 data/profile.json`
+   `档案同步：本轮有新增训练数据，已调用 history_mgr.py 写入`
 6. 不再使用原来的「快速自检 / 完整自检」双模式；所有场景统一使用检查目录。
 
 ## 标准回复模板
@@ -120,7 +121,7 @@ English Practice Mode｜英语练习模式
 
 检查目录：
 [✓] 1. 模式状态：已保持英语练习模式
-[✓] 2. 档案读取：已读取 data/profile.json
+[✓] 2. 档案读取：已通过 history_mgr.py config get 读取档案
 [✓] 3. 流程定位：当前为实战出题
 [✓] 4. 档案同步：本轮无新增训练数据，无需写入
 [✓] 5. 教学约束：已检查 5500 词守界、反馈节流、参谋不越权
@@ -139,9 +140,9 @@ English Practice Mode｜英语练习模式
 
 检查目录：
 [✓] 1. 模式状态：已保持英语练习模式
-[✓] 2. 档案读取：已读取 data/profile.json
+[✓] 2. 档案读取：已通过 history_mgr.py config get 读取档案
 [✓] 3. 流程定位：当前为批改反馈
-[✓] 4. 档案同步：本轮有新增训练数据，已先写入 data/profile.json
+[✓] 4. 档案同步：本轮有新增训练数据，已调用 history_mgr.py session add 写入
 [✓] 5. 教学约束：致命错反馈 ≤5 条，按 ! → ° → ~ 处理
 
 📋 总评
@@ -159,12 +160,32 @@ English Practice Mode｜英语练习模式
 
 检查目录：
 [✓] 1. 模式状态：已保持英语练习模式
-[✓] 2. 档案读取：已读取 data/profile.json
+[✓] 2. 档案读取：已通过 history_mgr.py config get 读取档案
 [✓] 3. 流程定位：当前为档案状态汇报
 [✓] 4. 档案同步：本轮无新增训练数据，无需写入
 [✓] 5. 教学约束：仅汇报关键训练状态，不新增训练决策
 
 （当前训练状态）
+```
+
+### E. 复习错题时
+
+```text
+English Practice Mode｜英语练习模式
+
+检查目录：
+[✓] 1. 模式状态：已保持英语练习模式
+[✓] 2. 档案读取：已通过 history_mgr.py config get 读取档案
+[✓] 3. 流程定位：当前为复习错题
+[✓] 4. 档案同步：本轮为查看历史数据，无需写入
+[✓] 5. 教学约束：复习展示历史错题，不新增训练决策
+[✓] 6. 句库查询：已通过 history_mgr.py review by-date/wrong-questions 获取错题数据
+
+📊 {date} 训练回顾
+总题数：X  错题：Y  致命错：Z
+主要错因：C3(3次) G8(2次) …
+
+（逐题展示错题：原题 + 错误编码 + 正确写法）
 ```
 
 ### D. 退出时
@@ -189,12 +210,13 @@ English Practice Mode｜英语练习模式
 
 触发 skill 后
 → 回复开头输出「English Practice Mode｜英语练习模式」
-→ 读取或确认 data/profile.json
+→ 运行 `history_mgr.py config get --json` 读取档案状态
 → 输出检查目录
 → 判断当前流程位置
 → 若为出题流程：运行 query_sentences.py --stage "<环节>" --quick 检索句库素材
+→ 若为复习流程：运行 history_mgr.py review by-date/wrong-questions 获取错题数据
 → 判断是否需要同步档案
-→ 若需同步：先写 data/profile.json
+→ 若需同步：调用 history_mgr.py session add / config set 等写入
 → 再输出教学正文
 ```
 
@@ -210,6 +232,7 @@ English Practice Mode｜英语练习模式
 | 回复「换下一个」「下一个致命错」 | 锁定下一个致命错 |
 | 回复「回归实战」「实战」 | 回归实战 |
 | 回复「自检」「查看进度」「看状态」「档案」 | 档案状态汇报 |
+| 回复「复习错题」「重做错题」「看某天」「错题回顾」等 | 复习错题 |
 | 回复「退出练习」 | 关闭英语练习模式 |
 
 ## 标准闭环工作流
@@ -219,15 +242,16 @@ English Practice Mode｜英语练习模式
 
 ┌── 实战模式 ───────────────────────────────────┐
 │ 🧾 检查目录                                     │
-│ → ① 读档案(难度+主题+错词)                     │
+│ → ① 读档案(config get + error stats)            │
 │ → ② 运行 query_sentences.py 检索句库素材       │
 │ → ③ 从结果中选取目标句子，进行句式迁移          │
 │ → ④ 生成中文题干 + 参考译文                    │
 │ → ⑤ 跑 vocab_check.py 验证词汇守界             │
 │ → ⑥ 设置易错陷阱 + 标注 source_sentence_id     │
+│ → ⑦ 📝 出题后 immediatly: question add 记录题目 │
 │ → 学生作答 → 批改（打编码 + 收集错词实例）      │
 │ → 反馈（! ≤ 5，其余折叠）                      │
-│ → 📝 写档案（error_stats + wrong_words）       │
+│ → 📝 批改后: session add 同步全部数据           │
 │ → 检查!数量                                    │
 │   ! == 0 → 🧾 检查目录 → 继续实战出题          │
 │   ! >= 1 → 进入深挖模式                        │
@@ -237,22 +261,32 @@ English Practice Mode｜英语练习模式
 │ 🧾 检查目录 → 锁定当前!（按!→°→~顺序）     │
 │ ① 对比纠错：错vs对，理解原理              │
 │   → 学生反馈：「懂了」或「再练一次」       │
-│   · 懂了 → 📝 写档案 → 进入②              │
-│   · 再练 → 📝 写档案 → 出新对比题         │
+│   · 懂了 → 📝 training deep-dive 推进     │
+│   · 再练 → 📝 session add → 出新对比题    │
 │ ② 微靶训练：2-3题快速验证                │
 │   → 学生选择：「换下一个」或「实战」       │
-│   · 换下一个 → 📝 写档案 → 锁下一个!      │
-│   · 实战 → 📝 写档案 → 回归实战           │
+│   · 换下一个 → 📝 锁下一个!               │
+│   · 实战 → 📝 deep-dive clear → 回归实战  │
 │                                           │
 │ 所有!处理完 → 🧾 检查目录 → 回归实战验证  │
 │ → 若回归新出! → 重复深挖 loop             │
 └──────────────────────────────────────────┘
 
+┌── 复习错题模式（新增）───────────────────────┐
+│ 🧾 检查目录 → 流程定位 = 复习错题             │
+│ → review by-date --date ... 获取该日回顾数据  │
+│ → 展示摘要（总题/错题/致命错/错因分布）       │
+│ → 逐题展示错题详情                            │
+│ → 问学生: (A)重做某题 (B)换一天 (C)回归实战    │
+│ → 若学生重做 → 出原题 → 正常批改流程          │
+│ → 若学生回归 → 回到实战模式                   │
+└──────────────────────────────────────────────┘
+
 → 📝 回归实战通过 → 档案状态汇报 → 难度自检（问一句）
-→ 某类连续5次零错 → graduated:true → 毕业正反馈
+→ 某类连续5次零错 → graduated:true → 毕业正反馈（session add 内部自动检查）
 ```
 
-**📝 = 先写文件再输出回复**：每个标注 📝 的节点，必须先调用文件写入完成，再将回复正文输出到对话中。
+**📝 = 先调用 tool 写入再输出回复**：每个标注 📝 的节点，必须先调用 history_mgr.py 完成写入，再将回复正文输出到对话中。
 
 ---
 
@@ -463,12 +497,11 @@ python scripts/query_sentences.py --stage "现象描述" -n 3 --json
 1. 识别并标注错误编码。
 2. 按 `!` → `°` → `~` 排序。
 3. 提取 C1–C5、L3 类错误中的具体错词 / 错误短语。
-4. 判断本轮靶向考察了哪些编码。
-5. 更新 `error_stats`、`wrong_words`、`session_log`、`training`、`meta.updated`。
-6. 写入 `data/profile.json`。
-7. 输出回复开头 `English Practice Mode｜英语练习模式`。
-8. 输出检查目录，并在第 4 项确认已同步。
-9. 输出批改正文。
+4. 构造 `session add` 的 JSON payload（含 errors 数组、严重度、错词、纠正）。
+5. 调用 `python scripts/history_mgr.py session add '<json>'` 完成所有数据同步（内部自动处理 error_stats/wrong_words/session_log/graduation/config.updated）。
+6. 输出回复开头 `English Practice Mode｜英语练习模式`。
+7. 输出检查目录，并在第 4 项确认已同步。
+8. 输出批改正文。
 
 禁止在写入档案前先给出批改结果。
 
@@ -552,158 +585,114 @@ python scripts/query_sentences.py --stage "现象描述" -n 3 --json
 
 ### 铁律
 
-本 agent 无跨会话记忆。所有学情必须落成文件 `data/profile.json`，靠「会话开始读、关键节点写」维持连续性。绝不依赖对话内的临时记忆。
+本 agent 无跨会话记忆。所有学情数据统一通过 `scripts/history_mgr.py`（Python + SQLite CLI）管理。**Agent 不得直接读写 JSON 文件。** 所有数据操作必须调用 history_mgr.py 命令完成。
 
-### 档案文件
-
-`data/profile.json` 是唯一事实来源。完整 schema：
-
-```json
-{
-  "meta": {
-    "level": "约9分", "target": "20分",
-    "created": "YYYY-MM-DD", "updated": "YYYY-MM-DD"
-  },
-  "difficulty": {
-    "sentence": "中", "vocab": "低", "logic": "低"
-  },
-  "topic": {
-    "current": "T1", "rotation_next": "T2",
-    "history": ["T1"]
-  },
-  "error_stats": {
-    "C3": {
-      "total": 18, "recent10": [2,1,3,2,0,1,2,3,2,2],
-      "last_seen": "YYYY-MM-DD",
-      "zero_streak": 0, "graduated": false,
-      "wrong_words": {
-        "more and more": {
-          "count": 5,
-          "last_seen": "YYYY-MM-DD",
-          "correction": "a growing number of / an increasing number of"
-        },
-        "let the world like": {
-          "count": 3,
-          "last_seen": "YYYY-MM-DD",
-          "correction": "make the world appreciate / help the world understand"
-        }
-      }
-    }
-  },
-  "training": {
-    "mode": "实战",
-    "target_code": null,
-    "pending_realcombat": false,
-    "graduated_list": [],
-    "current_deep_dive": {
-      "category": null,
-      "step": null,
-      "error_index": 0
-    }
-  },
-  "session_log": [
-    {"date":"...", "topic":"T1", "fatal":3, "general":6,
-     "optimize":4, "codes":["C3","G1","C3","G4"],
-     "wrong_words_collected": ["more and more", "let the world like"]}
-  ]
-}
+数据库文件：`data/training.db`（SQLite）。首次使用时初始化：
+```bash
+python scripts/history_mgr.py init
 ```
 
-### 档案同步判断模块（每轮强制）
+### 数据模型概览
 
-每次触发 skill 时，必须判断本轮是否有需要同步到 `data/profile.json` 的信息。
+history_mgr.py 管理以下数据（SQLite 六表结构）：
+
+- **config** — 学员水平/目标/难度配置/主题轮换/训练状态/严重度覆盖（替代原 `meta`/`difficulty`/`topic`/`training`）
+- **daily_questions** — 每日题目记录（CN 题干、参考译文、source_sentence_id、topic、训练环节、是否出错）
+- **session_log** — 每次训练记录（日期、主题、fatal/general/optimize 数量、备注）
+- **session_errors** — 每条 session 的具体错误（编码、严重度、错词、纠正）
+- **error_stats** — 各错误编码的聚合统计（total、recent10、zero_streak、graduated）
+- **wrong_words** — 错词库（按编码分组，含 count、last_seen、correction）
+
+所有内部逻辑（`recent10` 推进、`zero_streak` 归零/递增、`wrong_words` upsert、毕业检查、`config.updated` 更新）均由 history_mgr.py 自动处理，Agent 无需手动操作。
+
+### 常用命令速查
+
+| 场景 | 命令 |
+|:---|:---|
+| 会话开始 → 读取档案 | `python scripts/history_mgr.py config get --json` |
+| 出题前 → 读难度/主题/弱项 | `python scripts/history_mgr.py config get --json` + `error stats --json` + `error weakest --json` |
+| 出题后 → 记录题目 | `python scripts/history_mgr.py question add '{"date":"...","cn_prompt":"...","reference_answer":"...","source_sentence_id":"...","topic":"...","training_stage":"..."}'` |
+| 批改后 → 同步全部数据 | `python scripts/history_mgr.py session add '{"date":"...","topic":"...","fatal":N,"general":N,"optimize":N,"source_sentence_id":"...","micro_target":"...","errors":[{"code":"C3","severity":"!","wrong_word":"...","correction":"..."}]}'` |
+| 标记题目有错 | `python scripts/history_mgr.py question mark-wrong --id <id>` |
+| 复习某天 | `python scripts/history_mgr.py review by-date --date YYYY-MM-DD --json` |
+| 重做某天错题 | `python scripts/history_mgr.py review wrong-questions --date YYYY-MM-DD --json` |
+| 深挖状态切换 | `python scripts/history_mgr.py training deep-dive --category C3 --step "对比纠错"` |
+| 深挖清除 → 回归实战 | `python scripts/history_mgr.py training deep-dive clear` |
+| 难度/主题变更 | `python scripts/history_mgr.py config set difficulty.sentence 中` |
+| 查看进度 | `python scripts/history_mgr.py error stats --json` + `daily streak` |
+| 每日统计 | `python scripts/history_mgr.py daily summary --latest` |
 
 ### 必须同步的情况
 
-只要出现以下任一情况，必须先写档案，再输出正文：
+只要出现以下情况，必须先调用工具写入，再输出正文（与旧版 JSON 逻辑完全一致，只是写入方式变为 tool call）：
 
-1. 完成一次批改，产生错误编码、严重度、错词、评分或反馈结论。
-2. 进入、推进或结束深挖流程。
-3. 完成对比纠错、微靶训练、回归实战。
-4. 调整主题、难度、训练类型或单元进度。
-5. 用户表达新的弱项、目标、备考状态、偏好或训练要求。
-6. 发现新的高频错词、错误短语、典型中式表达。
-7. 错误类别达到毕业条件或需要更新 `graduated_list`。
-8. `training.mode`、`current_deep_dive`、`pending_realcombat` 发生变化。
+1. 完成一次批改，产生错误编码、严重度、错词 → `session add`
+2. 进入、推进或结束深挖流程 → `training deep-dive`
+3. 完成对比纠错、微靶训练、回归实战 → `session add` + `training deep-dive clear`
+4. 调整主题、难度、训练类型 → `config set`
+5. 发现新的高频错词、错误短语 → `session add` 内部自动处理
+6. 错误类别达到毕业条件 → `session add` 内部自动检查
+7. 出题完成 → `question add`
 
 ### 不需要同步的情况
-
-以下情况通常不写档案，但仍必须在检查目录中说明「本轮无新增训练数据，无需写入」：
 
 1. 用户只是确认、寒暄，且没有推进训练。
 2. 用户询问规则解释，没有产生训练数据。
 3. 用户要求查看已有状态，但没有修改任何信息。
 4. 用户说「退出练习」。
 
-### 同步前检查
+此时检查目录第 4 项写：`档案同步：本轮无新增训练数据，无需写入`
 
-每次写入前必须核对：
+### 工具调用铁律
 
-1. `recent10` 长度不超过 10。
-2. 本次犯错的编码，`zero_streak` 必须归零。
-3. 本次靶向考察但未犯的编码，才允许 `zero_streak +1`。
-4. 已毕业编码不应进入主推送序列。
-5. `meta.updated` 必须更新为当前日期。
-6. 写入失败必须明示，不允许假装已同步。
+- `session add` 是**唯一写入命令**（批改场景）—— 内部原子完成 session_log + session_errors + error_stats + wrong_words + 毕业检查 + config.updated 全部更新
+- `config set` / `config set-json` 用于配置变更（难度、主题、训练模式）
+- `training deep-dive` 用于深挖状态管理
+- `question add` 用于记录题目（新的核心功能）
+- 所有查询使用 `--json` 获取结构化输出
+- 若命令返回非零 exit code，检查 stderr 并告知用户「档案同步遇到问题」
+- **禁止 Agent 手工推算 recent10、zero_streak、graduated 等逻辑** —— 全部由 tool 内部完成
 
-### 读写时机（强制执行）
+---
 
-**① 每次触发 skill → 必须先读或确认档案**
+## 模块七.b：复习错题流程（新增）
 
-触发 skill 后，第一步永远是读取 `data/profile.json`。
+### 触发条件
 
-若文件不存在，按 schema 创建初始档案。
+用户提到「复习错题」「重做错题」「看某天」「错题回顾」「复习X月X日的错题」等 → 进入复习错题流程。
 
-- `error_stats` 为空
-- `difficulty` 默认低 / 低 / 低
-- `topic.current` 从 T1 起
-- `training.mode` 默认 `实战`
-读取或创建后，必须在检查目录中体现：
+### 流程
 
-```text
-[✓] 2. 档案读取：已读取 data/profile.json
+```
+用户说「复习6月17日的错题」
+→ 🧾 检查目录（流程定位 = 复习错题）
+→ 运行: python scripts/history_mgr.py review by-date --date 2026-06-17 --json
+→ 输出每日回顾摘要（总题数 / 错题数 / 致命错 / 主要错因分布）
+→ 逐题展示错题（CN 题干 + 原文错误编码 + 正确写法）
+→ 问学生：
+    (A) 「重做某道错题」— 选中某道错题重做（正常批改流程）
+    (B) 「换一天」— 切换到另一天
+    (C) 「回归实战」— 退出复习，继续实战出题
 ```
 
-或：
+### 重做某天错题
 
-```text
-[✓] 2. 档案读取：未发现档案，已创建初始 data/profile.json
+```
+用户说「重做6月17日的错题」
+→ 🧾 检查目录（流程定位 = 复习错题）
+→ 运行: python scripts/history_mgr.py review wrong-questions --date 2026-06-17 --json
+→ 仅返回 is_wrong=1 的题目
+→ 按错误数降序排列，优先展示最严重的错题
+→ 展示 CN 题干 + 提示「上次你在这道题犯了[错误列表]，这次特别注意」
+→ 学生作答 → 正常批改流程（session add 写入）
+→ 若通过 → 该题 is_wrong 标记自动清除（session add 内部处理）
 ```
 
-然后继续判断当前流程，不再单独输出旧版快速自检。
+### 时间段复习
 
-**② 每次批改完成后 → 必须写**（最关键、最容易漏的一步）
-
-按以下顺序更新并写回文件（写文件完成后再输出回复正文）：
-
-1. 本次每个错误编码 → `total +1`，push 进 `recent10`（超 10 条删最旧）
-2. 本次出现的编码 → `last_seen` 更新为今天，该码 `zero_streak` 归零
-3. **记录错词实例**：对 C1–C5、L3 类错误，把具体错误短语提取出来记入 `wrong_words`：
-   - 该短语已在 `wrong_words` 中 → `count +1`，更新 `last_seen`
-   - 该短语未记录 → 新建条目，设 `count:1`，`correction` 填正确写法
-   - 每个错误类别下的 wrong_words 按 count 降序排列
-4. 本次**靶向考察了但未犯**的编码 → `zero_streak +1`（仅当本次确实练到该点才 +1，没考到不动 — 严格版毕业判定）
-5. 检查 `zero_streak >= 5` 的类别 → 设 `graduated: true`，加入 `graduated_list`，从主推送序列移除，并给学生正反馈
-6. push 一条记录进 `session_log`（含 `wrong_words_collected`），更新 `meta.updated`
-
-**③ 深挖流程关键节点 → 必须写**
-
-以下每个节点完成后立即写回：
-- 对比纠错完成（状态变更 `training.current_deep_dive`）
-- 微靶完成（`training.mode` 从 `深挖` 切回 `实战`）
-- 回归实战完成（所有!处理完后的验证通过）
-
-**④ 难度调节 / 主题轮换 / 训练模式变更后 → 立即写**
-
-- 学生确认调难度 → 更新 `difficulty` 并写回
-- 开新主题单元 → 更新 `topic.current` / `rotation_next` / `history`
-- 深挖模式开始/结束 → 更新 `training.mode` / `training.current_deep_dive` / `pending_realcombat`
-
-### 出题 / 推送前的读取规则
-
-- 出题前：读 `difficulty`（定难度）、`topic`（定主题）、`error_stats`（设针对性陷阱）
-- 推送前：读 `error_stats` 算推送分，读 `graduated_list` 排除已毕业类别
-- 实战回归前：读 `training.pending_realcombat`，为 `true` 则自动安排
+```bash
+python scripts/history_mgr.py review by-range --start 2026-06-13 --end 2026-06-17 --json
+```
 
 ---
 
@@ -764,6 +753,7 @@ python scripts/query_sentences.py --stage "现象描述" -n 3 --json
 
 ### 工具脚本
 
+- `scripts/history_mgr.py` — **历史管理工具（所有档案操作必用）**，Python + SQLite CLI，管理 config/daily_questions/session_log/session_errors/error_stats/wrong_words，包含迁移/导出/校验功能
 - `scripts/query_sentences.py` — **句子库查询工具（出题必用）**，支持按训练环节/章节/主题/年份检索
 - `scripts/vocab_check.py` — 自动判词脚本，秒级返回词是否在 5500 表内
 - `scripts/extract_sentences.py` — 句子抽取清洗脚本（维护用，日常不出题不需运行）

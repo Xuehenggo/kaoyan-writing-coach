@@ -3,7 +3,7 @@
     "level": "约9分",
     "target": "20分",
     "created": "2026-06-13",
-    "updated": "2026-06-15"
+    "updated": "2026-06-17"
   },
   "difficulty": {
     "sentence": "低",
@@ -11,15 +11,33 @@
     "logic": "低"
   },
   "topic": {
-    "current": "T4",
-    "rotation_next": "T5",
-    "history": ["T1", "T2", "T3", "T4"]
+    "current": "T2",
+    "rotation_next": "T3",
+    "history": [
+      "T1",
+      "T2",
+      "T3",
+      "T4",
+      "T5",
+      "T6"
+    ]
   },
   "error_stats": {
     "C3": {
-      "total": 6,
-      "recent10": [1, 1, 0, 0, 0, 0, 1, 1, 1, 0],
-      "last_seen": "2026-06-15",
+      "total": 12,
+      "recent10": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "last_seen": "2026-06-17",
       "zero_streak": 1,
       "graduated": false,
       "wrong_words": {
@@ -52,12 +70,45 @@
           "count": 1,
           "last_seen": "2026-06-13",
           "correction": "this trend"
+        },
+        "writing art (for 书法)": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "brush writing / writing with a brush"
+        },
+        "the bond of culture": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "cultural bonds / cultural ties"
+        },
+        "our spirit (for 意志)": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "our willpower / our resolve / our mental strength"
+        },
+        "By the contrast": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "By contrast / In contrast"
+        },
+        "friends of me": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "my friends / friends of mine"
+        },
+        "take efforts": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "make efforts"
         }
       }
     },
     "C4": {
       "total": 2,
-      "recent10": [1, 1],
+      "recent10": [
+        1,
+        1
+      ],
       "last_seen": "2026-06-14",
       "zero_streak": 0,
       "graduated": false,
@@ -75,10 +126,21 @@
       }
     },
     "G4": {
-      "total": 13,
-      "recent10": [1, 1, 1, 1, 3, 0, 0, 1, 0, 0],
-      "last_seen": "2026-06-15",
-      "zero_streak": 2,
+      "total": 14,
+      "recent10": [
+        1,
+        1,
+        3,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "last_seen": "2026-06-17",
+      "zero_streak": 1,
       "graduated": false,
       "wrong_words": {
         "smart phone (bare singular)": {
@@ -130,14 +192,26 @@
           "count": 1,
           "last_seen": "2026-06-14",
           "correction": "have a chance / have the chance"
+        },
+        "an serious": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "a serious"
         }
       }
     },
     "G8": {
-      "total": 3,
-      "recent10": [1, 1, 1],
-      "last_seen": "2026-06-15",
-      "zero_streak": 0,
+      "total": 10,
+      "recent10": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "last_seen": "2026-06-17",
+      "zero_streak": 1,
       "graduated": false,
       "wrong_words": {
         "more likely cultivate": {
@@ -154,21 +228,62 @@
           "count": 1,
           "last_seen": "2026-06-14",
           "correction": "constantly learn / are constantly learning"
+        },
+        "another young man lying (缺 is)": {
+          "count": 1,
+          "last_seen": "2026-06-15",
+          "correction": "another young man is lying"
+        },
+        "is teach": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "is teaching / teaches"
+        },
+        "A number of... on the table (no verb)": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "A number of paper-cuts are on the table / There are..."
+        },
+        "Depicted in the picture shows": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "The picture shows / Depicted in the picture is..."
+        },
+        "Why... fragment as sentence": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "Why are...? (question) or integrate into main clause"
+        },
+        "friends even glued": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "friends are even glued"
+        },
+        "To deal with... period fragment": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "Remove period or make it a complete sentence"
         }
       }
     },
     "G3": {
       "total": 1,
-      "recent10": [1],
+      "recent10": [
+        1
+      ],
       "last_seen": "2026-06-14",
       "zero_streak": 0,
       "graduated": false,
       "wrong_words": {}
     },
     "G6": {
-      "total": 1,
-      "recent10": [1],
-      "last_seen": "2026-06-14",
+      "total": 10,
+      "recent10": [
+        1,
+        0,
+        1
+      ],
+      "last_seen": "2026-06-17",
       "zero_streak": 0,
       "graduated": false,
       "wrong_words": {
@@ -176,12 +291,55 @@
           "count": 1,
           "last_seen": "2026-06-14",
           "correction": "anywhere"
+        },
+        "on the middle": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "in the middle"
+        },
+        "In the individual level": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "At the individual level"
+        },
+        "glued (his) phone": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "glued to his phone"
+        },
+        "glued (his) phone 2": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "glued to his phone (repeat)"
+        },
+        "sitting on the classroom": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "sitting in the classroom"
+        },
+        "listening the teacher": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "listening to the teacher"
+        },
+        "effects to": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "effects on"
+        },
+        "in young people": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "among young people"
         }
       }
     },
     "S1": {
       "total": 2,
-      "recent10": [1, 1],
+      "recent10": [
+        1,
+        1
+      ],
       "last_seen": "2026-06-14",
       "zero_streak": 0,
       "graduated": false,
@@ -199,10 +357,15 @@
       }
     },
     "S2": {
-      "total": 2,
-      "recent10": [1, 1],
-      "last_seen": "2026-06-14",
-      "zero_streak": 0,
+      "total": 7,
+      "recent10": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "last_seen": "2026-06-17",
+      "zero_streak": 1,
       "graduated": false,
       "wrong_words": {
         "comma splice + it": {
@@ -214,14 +377,49 @@
           "count": 1,
           "last_seen": "2026-06-14",
           "correction": ", and ..."
+        },
+        "reading by contrast another young man": {
+          "count": 1,
+          "last_seen": "2026-06-15",
+          "correction": "reading. By contrast, another young man is lying in bed"
+        },
+        "comma before To begin with": {
+          "count": 1,
+          "last_seen": "2026-06-15",
+          "correction": ". To begin with"
+        },
+        "comma splice (two cartoons + indep clause)": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "Use period or \"where\" / \"in which\""
+        },
+        "Depicted is that clause": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "Depicted in the photo is a young man (直接接名词/名词短语)"
+        },
+        "The main reason is [missing that]": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "The main reason is that..."
         }
       }
     },
     "L1": {
-      "total": 9,
-      "recent10": [1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-      "last_seen": "2026-06-15",
-      "zero_streak": 0,
+      "total": 28,
+      "recent10": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "last_seen": "2026-06-17",
+      "zero_streak": 1,
       "graduated": false,
       "wrong_words": {
         "builing": {
@@ -258,14 +456,118 @@
           "count": 1,
           "last_seen": "2026-06-14",
           "correction": "enables / enabling"
+        },
+        "graducated": {
+          "count": 1,
+          "last_seen": "2026-06-15",
+          "correction": "graduated / graduate"
+        },
+        "reasecher": {
+          "count": 1,
+          "last_seen": "2026-06-15",
+          "correction": "researcher"
+        },
+        "spirt": {
+          "count": 1,
+          "last_seen": "2026-06-15",
+          "correction": "spirit"
+        },
+        "Chinse": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "Chinese"
+        },
+        "teh": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "the"
+        },
+        "learing": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "learning"
+        },
+        "protrayal": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "portrayal"
+        },
+        "technoloy": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "technology"
+        },
+        "strikng": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "striking"
+        },
+        "constrast": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "contrast"
+        },
+        "aborsbed": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "absorbed"
+        },
+        "obsorbed": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "absorbed (ab-, not ob-)"
+        },
+        "yound": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "young"
+        },
+        "nagetive": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "negative"
+        },
+        "realiance": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "reliance"
+        },
+        "effert": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "effort"
+        },
+        "acdemic": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "academic"
+        },
+        "persistant": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "persistent"
+        },
+        "everyday (adv)": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "every day (two words for each day)"
         }
       }
     },
     "L3": {
-      "total": 3,
-      "recent10": [1, 1, 1, 0, 0, 0],
-      "last_seen": "2026-06-13",
-      "zero_streak": 1,
+      "total": 8,
+      "recent10": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "last_seen": "2026-06-17",
+      "zero_streak": 0,
       "graduated": false,
       "wrong_words": {
         "undivided": {
@@ -282,28 +584,96 @@
           "count": 1,
           "last_seen": "2026-06-13",
           "correction": "habits"
+        },
+        "hardworking (adj as noun)": {
+          "count": 1,
+          "last_seen": "2026-06-15",
+          "correction": "hard work"
+        },
+        "phenomenon intends": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "the phenomenon shows / indicates / suggests that..."
+        },
+        "lays (for lies)": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "lies"
+        },
+        "noticing ability": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "attention / ability to concentrate"
+        },
+        "effects (for affects)": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "affects (verb: has an impact on)"
         }
       }
     },
     "G1": {
-      "total": 1,
-      "recent10": [1],
-      "last_seen": "2026-06-13",
-      "zero_streak": 0,
+      "total": 8,
+      "recent10": [
+        1,
+        1,
+        2,
+        1,
+        0
+      ],
+      "last_seen": "2026-06-17",
+      "zero_streak": 1,
       "graduated": false,
       "wrong_words": {
         "smart phone have": {
           "count": 1,
           "last_seen": "2026-06-13",
           "correction": "smart phone has"
+        },
+        "student stand": {
+          "count": 1,
+          "last_seen": "2026-06-15",
+          "correction": "student stands"
+        },
+        "hard work play": {
+          "count": 1,
+          "last_seen": "2026-06-15",
+          "correction": "hard work plays"
+        },
+        "an elderly man fall": {
+          "count": 1,
+          "last_seen": "2026-06-15",
+          "correction": "an elderly man falls"
+        },
+        "students is": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "students are"
+        },
+        "phone use waste": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "phone use wastes"
+        },
+        "phone use weaken": {
+          "count": 1,
+          "last_seen": "2026-06-16",
+          "correction": "phone use weakens"
+        },
+        "performance need": {
+          "count": 1,
+          "last_seen": "2026-06-17",
+          "correction": "performance needs"
         }
       }
     },
     "L4": {
       "total": 1,
-      "recent10": [1],
+      "recent10": [
+        1
+      ],
       "last_seen": "2026-06-13",
-      "zero_streak": 0,
+      "zero_streak": 1,
       "graduated": false,
       "wrong_words": {
         "Groundway": {
@@ -315,7 +685,11 @@
     },
     "L2": {
       "total": 3,
-      "recent10": [1, 1, 1],
+      "recent10": [
+        1,
+        1,
+        1
+      ],
       "last_seen": "2026-06-15",
       "zero_streak": 0,
       "graduated": false,
@@ -339,7 +713,9 @@
     },
     "M2": {
       "total": 1,
-      "recent10": [1],
+      "recent10": [
+        1
+      ],
       "last_seen": "2026-06-13",
       "zero_streak": 0,
       "graduated": false,
@@ -353,7 +729,13 @@
     },
     "G2": {
       "total": 4,
-      "recent10": [1, 1, 1, 1, 0],
+      "recent10": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
       "last_seen": "2026-06-15",
       "zero_streak": 1,
       "graduated": false,
@@ -384,13 +766,135 @@
   },
   "session_log": [
     {
+      "date": "2026-06-15",
+      "topic": "T5",
+      "fatal": 2,
+      "general": 1,
+      "optimize": 0,
+      "source_sentence_id": "KYC-0102",
+      "codes": [
+        "S2",
+        "G8"
+      ],
+      "micro_target": "S2",
+      "wrong_words_collected": [
+        "reading by contrast another young man",
+        "another young man lying (缺 is)"
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "topic": "T5",
+      "fatal": 2,
+      "general": 1,
+      "optimize": 0,
+      "note": "对比纠错再练一次",
+      "codes": [
+        "G1",
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "student stand",
+        "graducated"
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "topic": "T5",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "微靶训练 G1 通过",
+      "codes": [],
+      "micro_target": "G1",
+      "micro_target_passed": [
+        "G1"
+      ],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-15",
+      "topic": "T5",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "微靶训练 L1 通过",
+      "codes": [],
+      "micro_target": "L1",
+      "micro_target_passed": [
+        "L1"
+      ],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-15",
+      "topic": "T5",
+      "fatal": 1,
+      "general": 2,
+      "optimize": 0,
+      "source_sentence_id": "KYC-0042",
+      "codes": [
+        "L3"
+      ],
+      "wrong_words_collected": [
+        "hardworking (adj as noun)"
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "topic": "T5",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "微靶训练 L3 通过",
+      "codes": [],
+      "micro_target": "L3",
+      "micro_target_passed": [
+        "L3"
+      ],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-15",
+      "topic": "T5",
+      "fatal": 1,
+      "general": 0,
+      "optimize": 1,
+      "source_sentence_id": "KYC-0046",
+      "codes": [
+        "G1"
+      ],
+      "wrong_words_collected": [
+        "hard work play"
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "topic": "T5",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "G1 回归纠错修正通过",
+      "codes": [],
+      "wrong_words_collected": []
+    },
+    {
       "date": "2026-06-13",
       "topic": "T1",
       "fatal": 3,
       "general": 2,
       "optimize": 0,
-      "codes": ["C3", "G2", "C3", "G8"],
-      "wrong_words_collected": ["more and more", "the appearance of this trend", "start"]
+      "codes": [
+        "C3",
+        "G2",
+        "C3",
+        "G8"
+      ],
+      "wrong_words_collected": [
+        "more and more",
+        "the appearance of this trend",
+        "start"
+      ]
     },
     {
       "date": "2026-06-13",
@@ -398,7 +902,10 @@
       "fatal": 1,
       "general": 1,
       "optimize": 0,
-      "codes": ["G8", "G2"],
+      "codes": [
+        "G8",
+        "G2"
+      ],
       "wrong_words_collected": []
     },
     {
@@ -407,8 +914,14 @@
       "fatal": 2,
       "general": 1,
       "optimize": 0,
-      "codes": ["G4", "L3"],
-      "wrong_words_collected": ["phone (bare)", "undivided"]
+      "codes": [
+        "G4",
+        "L3"
+      ],
+      "wrong_words_collected": [
+        "phone (bare)",
+        "undivided"
+      ]
     },
     {
       "date": "2026-06-13",
@@ -416,8 +929,28 @@
       "fatal": 4,
       "general": 4,
       "optimize": 0,
-      "codes": ["G4", "G4", "L3", "L3", "G4", "G4", "G1", "L1", "M2"],
-      "wrong_words_collected": ["platform (bare)", "classroom (bare)", "bike (bare)", "life (bare)", "style (for transport)", "customs (for habits)", "smart phone have", "Curiosty", "people'"]
+      "codes": [
+        "G4",
+        "G4",
+        "L3",
+        "L3",
+        "G4",
+        "G4",
+        "G1",
+        "L1",
+        "M2"
+      ],
+      "wrong_words_collected": [
+        "platform (bare)",
+        "classroom (bare)",
+        "bike (bare)",
+        "life (bare)",
+        "style (for transport)",
+        "customs (for habits)",
+        "smart phone have",
+        "Curiosty",
+        "people'"
+      ]
     },
     {
       "date": "2026-06-13",
@@ -425,9 +958,18 @@
       "fatal": 0,
       "general": 2,
       "optimize": 0,
-      "codes": ["L4", "L2"],
-      "micro_target_passed": ["G4", "L3"],
-      "wrong_words_collected": ["Groundway", "choose (noun)"]
+      "codes": [
+        "L4",
+        "L2"
+      ],
+      "micro_target_passed": [
+        "G4",
+        "L3"
+      ],
+      "wrong_words_collected": [
+        "Groundway",
+        "choose (noun)"
+      ]
     },
     {
       "date": "2026-06-14",
@@ -435,8 +977,15 @@
       "fatal": 2,
       "general": 1,
       "optimize": 0,
-      "codes": ["G4", "G8", "G3"],
-      "wrong_words_collected": ["smart phone (bare singular)", "rely on handle"]
+      "codes": [
+        "G4",
+        "G8",
+        "G3"
+      ],
+      "wrong_words_collected": [
+        "smart phone (bare singular)",
+        "rely on handle"
+      ]
     },
     {
       "date": "2026-06-14",
@@ -444,8 +993,12 @@
       "fatal": 1,
       "general": 0,
       "optimize": 1,
-      "codes": ["G2"],
-      "wrong_words_collected": ["chose"]
+      "codes": [
+        "G2"
+      ],
+      "wrong_words_collected": [
+        "chose"
+      ]
     },
     {
       "date": "2026-06-14",
@@ -453,8 +1006,12 @@
       "fatal": 1,
       "general": 0,
       "optimize": 0,
-      "codes": ["G4"],
-      "wrong_words_collected": ["the remote work"]
+      "codes": [
+        "G4"
+      ],
+      "wrong_words_collected": [
+        "the remote work"
+      ]
     },
     {
       "date": "2026-06-14",
@@ -462,8 +1019,16 @@
       "fatal": 3,
       "general": 0,
       "optimize": 1,
-      "codes": ["C4", "G6", "S2"],
-      "wrong_words_collected": ["let us can", "in anywhere", "social mode"]
+      "codes": [
+        "C4",
+        "G6",
+        "S2"
+      ],
+      "wrong_words_collected": [
+        "let us can",
+        "in anywhere",
+        "social mode"
+      ]
     },
     {
       "date": "2026-06-14",
@@ -471,8 +1036,19 @@
       "fatal": 4,
       "general": 0,
       "optimize": 1,
-      "codes": ["S1", "L1", "L1", "C4", "G4"],
-      "wrong_words_collected": ["convient", "enbling", "is convient life", "have chance"]
+      "codes": [
+        "S1",
+        "L1",
+        "L1",
+        "C4",
+        "G4"
+      ],
+      "wrong_words_collected": [
+        "convient",
+        "enbling",
+        "is convient life",
+        "have chance"
+      ]
     },
     {
       "date": "2026-06-14",
@@ -480,8 +1056,12 @@
       "fatal": 1,
       "general": 1,
       "optimize": 0,
-      "codes": ["S2"],
-      "wrong_words_collected": ["comma splice"]
+      "codes": [
+        "S2"
+      ],
+      "wrong_words_collected": [
+        "comma splice"
+      ]
     },
     {
       "date": "2026-06-14",
@@ -489,8 +1069,13 @@
       "fatal": 1,
       "general": 1,
       "optimize": 0,
-      "codes": ["G8", "G4"],
-      "wrong_words_collected": ["constantly learning"]
+      "codes": [
+        "G8",
+        "G4"
+      ],
+      "wrong_words_collected": [
+        "constantly learning"
+      ]
     },
     {
       "date": "2026-06-14",
@@ -498,8 +1083,13 @@
       "fatal": 2,
       "general": 1,
       "optimize": 1,
-      "codes": ["S1", "L1"],
-      "wrong_words_collected": ["capacable"]
+      "codes": [
+        "S1",
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "capacable"
+      ]
     },
     {
       "date": "2026-06-14",
@@ -507,7 +1097,11 @@
       "fatal": 1,
       "general": 2,
       "optimize": 0,
-      "codes": ["S2", "G8", "C1"],
+      "codes": [
+        "S2",
+        "G8",
+        "C1"
+      ],
       "wrong_words_collected": []
     },
     {
@@ -516,8 +1110,13 @@
       "fatal": 1,
       "general": 2,
       "optimize": 1,
-      "codes": ["G8", "G4"],
-      "wrong_words_collected": ["enables... full of"]
+      "codes": [
+        "G8",
+        "G4"
+      ],
+      "wrong_words_collected": [
+        "enables... full of"
+      ]
     },
     {
       "date": "2026-06-15",
@@ -525,8 +1124,20 @@
       "fatal": 4,
       "general": 1,
       "optimize": 1,
-      "codes": ["G2", "G4", "G4", "G4", "L1"],
-      "wrong_words_collected": ["start (tense)", "protecting environment", "the pollution", "the daily life", "polution"]
+      "codes": [
+        "G2",
+        "G4",
+        "G4",
+        "G4",
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "start (tense)",
+        "protecting environment",
+        "the pollution",
+        "the daily life",
+        "polution"
+      ]
     },
     {
       "date": "2026-06-15",
@@ -535,8 +1146,14 @@
       "general": 0,
       "optimize": 0,
       "micro_target": "G2",
-      "codes": ["C3", "L2"],
-      "wrong_words_collected": ["recommend people to classify", "environment (noun as adj)"]
+      "codes": [
+        "C3",
+        "L2"
+      ],
+      "wrong_words_collected": [
+        "recommend people to classify",
+        "environment (noun as adj)"
+      ]
     },
     {
       "date": "2026-06-15",
@@ -545,8 +1162,14 @@
       "general": 1,
       "optimize": 0,
       "micro_target": "G4",
-      "codes": ["C3", "L1"],
-      "wrong_words_collected": ["take actions", "polution"]
+      "codes": [
+        "C3",
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "take actions",
+        "polution"
+      ]
     },
     {
       "date": "2026-06-15",
@@ -555,8 +1178,12 @@
       "general": 1,
       "optimize": 1,
       "micro_target": "G4",
-      "codes": ["L1"],
-      "wrong_words_collected": ["Goverments"]
+      "codes": [
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "Goverments"
+      ]
     },
     {
       "date": "2026-06-15",
@@ -564,8 +1191,15 @@
       "fatal": 3,
       "general": 0,
       "optimize": 1,
-      "codes": ["C3", "C3", "G4"],
-      "wrong_words_collected": ["The factory's development", "a growing number of people (for 人口增长)"]
+      "codes": [
+        "C3",
+        "C3",
+        "G4"
+      ],
+      "wrong_words_collected": [
+        "The factory's development",
+        "a growing number of people (for 人口增长)"
+      ]
     },
     {
       "date": "2026-06-15",
@@ -574,8 +1208,12 @@
       "general": 1,
       "optimize": 0,
       "micro_target": "C3",
-      "codes": ["L2"],
-      "wrong_words_collected": ["mainly (adv for adj)"]
+      "codes": [
+        "L2"
+      ],
+      "wrong_words_collected": [
+        "mainly (adv for adj)"
+      ]
     },
     {
       "date": "2026-06-15",
@@ -584,8 +1222,12 @@
       "general": 0,
       "optimize": 0,
       "micro_target": "L1",
-      "codes": ["L1"],
-      "wrong_words_collected": ["transportion"]
+      "codes": [
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "transportion"
+      ]
     },
     {
       "date": "2026-06-15",
@@ -604,8 +1246,14 @@
       "general": 1,
       "optimize": 1,
       "source_sentence_id": "KYC-0075",
-      "codes": ["G4", "G8"],
-      "wrong_words_collected": ["the environmental awareness", "more likely cultivate"]
+      "codes": [
+        "G4",
+        "G8"
+      ],
+      "wrong_words_collected": [
+        "the environmental awareness",
+        "more likely cultivate"
+      ]
     },
     {
       "date": "2026-06-15",
@@ -614,8 +1262,12 @@
       "general": 1,
       "optimize": 0,
       "micro_target": "G4",
-      "codes": ["L1"],
-      "wrong_words_collected": ["builing"]
+      "codes": [
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "builing"
+      ]
     },
     {
       "date": "2026-06-15",
@@ -626,6 +1278,640 @@
       "source_sentence_id": "KYC-0084",
       "codes": [],
       "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-15",
+      "topic": "T5",
+      "fatal": 1,
+      "general": 1,
+      "optimize": 0,
+      "source_sentence_id": "KYC-0082",
+      "codes": [
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "reasecher"
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "topic": "T5",
+      "fatal": 1,
+      "general": 0,
+      "optimize": 0,
+      "source_sentence_id": "KYC-0085",
+      "codes": [
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "spirt"
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "topic": "T6",
+      "fatal": 1,
+      "general": 0,
+      "optimize": 0,
+      "codes": [
+        "G1"
+      ],
+      "wrong_words_collected": [
+        "an elderly man fall"
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "topic": "T6",
+      "fatal": 1,
+      "general": 1,
+      "optimize": 0,
+      "codes": [
+        "S2"
+      ],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-16",
+      "topic": "T1",
+      "fatal": 1,
+      "general": 3,
+      "optimize": 1,
+      "source_sentence_id": "KYC-0004",
+      "codes": [
+        "L4",
+        "C3",
+        "C3",
+        "L3"
+      ],
+      "micro_target": "C3",
+      "wrong_words_collected": [
+        "maobi",
+        "writing Chinese",
+        "elder"
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "topic": "T1",
+      "fatal": 2,
+      "general": 1,
+      "optimize": 0,
+      "note": "微靶训练 L4+C3",
+      "codes": [
+        "G8",
+        "G8",
+        "G3"
+      ],
+      "micro_target": "C3",
+      "micro_target_passed": [
+        "L4"
+      ],
+      "wrong_words_collected": [
+        "is teach",
+        "A number of... on the table (no verb)"
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "topic": "T1",
+      "fatal": 1,
+      "general": 2,
+      "optimize": 0,
+      "note": "G8 对比纠错再练",
+      "codes": [
+        "G1",
+        "G6"
+      ],
+      "micro_target": "G8",
+      "micro_target_passed": [
+        "G8"
+      ],
+      "wrong_words_collected": [
+        "students is",
+        "on the middle"
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "topic": "T1",
+      "fatal": 0,
+      "general": 2,
+      "optimize": 1,
+      "note": "实战回归-T1第2题 原因分析",
+      "source_sentence_id": "KYC-0041",
+      "codes": [
+        "C3",
+        "L3"
+      ],
+      "wrong_words_collected": [
+        "writing art (for 书法)",
+        "phenomenon intends"
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "topic": "T1",
+      "fatal": 3,
+      "general": 2,
+      "optimize": 0,
+      "note": "T1 第3题 影响论述",
+      "codes": [
+        "G6",
+        "G6",
+        "L1",
+        "C3",
+        "S2"
+      ],
+      "wrong_words_collected": [
+        "In the individual level",
+        "Chinse",
+        "the bond of culture"
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "topic": "T2",
+      "fatal": 2,
+      "general": 0,
+      "optimize": 0,
+      "source_sentence_id": "框架题",
+      "codes": [
+        "L1",
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "teh",
+        "learing"
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "topic": "T2",
+      "fatal": 2,
+      "general": 1,
+      "optimize": 0,
+      "source_sentence_id": "KYC-0022",
+      "codes": [
+        "L1",
+        "L1",
+        "L3"
+      ],
+      "wrong_words_collected": [
+        "protrayal",
+        "technoloy",
+        "lays (for lies)"
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "L1 微靶训练通过",
+      "codes": [],
+      "micro_target": "L1",
+      "micro_target_passed": [
+        "L1"
+      ],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-16",
+      "topic": "T2",
+      "fatal": 2,
+      "general": 1,
+      "optimize": 0,
+      "source_sentence_id": "KYC-0107",
+      "codes": [
+        "G1",
+        "G1",
+        "C3"
+      ],
+      "wrong_words_collected": [
+        "phone use waste",
+        "phone use weaken",
+        "our spirit (for 意志)"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 5,
+      "general": 0,
+      "optimize": 0,
+      "source_sentence_id": "KYC-0024",
+      "codes": [
+        "L1",
+        "L1",
+        "S2",
+        "G6",
+        "C3"
+      ],
+      "wrong_words_collected": [
+        "strikng",
+        "constrast",
+        "comma splice (two cartoons)",
+        "glued phone",
+        "By the contrast"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "对比纠错再练一次 (L1)",
+      "codes": [],
+      "micro_target": "L1",
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 2,
+      "general": 0,
+      "optimize": 0,
+      "note": "对比纠错再练-第2次 (L1微靶)",
+      "codes": [
+        "L1",
+        "G6"
+      ],
+      "micro_target": "L1",
+      "wrong_words_collected": [
+        "aborsbed",
+        "glued phone (repeat G6)"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "L1/G6 对比纠错再练-第3次",
+      "codes": [],
+      "micro_target": "L1",
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 1,
+      "general": 1,
+      "optimize": 0,
+      "note": "微靶训练 L1 — 仍有错",
+      "codes": [
+        "L1"
+      ],
+      "micro_target": "L1",
+      "wrong_words_collected": [
+        "obsorbed"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "对比纠错再练-absorbed 通过",
+      "codes": [],
+      "micro_target": "L1",
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 1,
+      "general": 0,
+      "optimize": 0,
+      "note": "S2 对比纠错再练 — 通过；新G8出现",
+      "codes": [
+        "G8"
+      ],
+      "micro_target": "S2",
+      "wrong_words_collected": [
+        "Depicted in the picture shows"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 1,
+      "general": 0,
+      "optimize": 0,
+      "note": "G8 对比纠错再练 — G8通过；新S2出现",
+      "codes": [
+        "S2"
+      ],
+      "micro_target": "G8",
+      "wrong_words_collected": [
+        "Depicted in the photo is that..."
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 2,
+      "general": 0,
+      "optimize": 0,
+      "note": "S2 对比纠错再练 — 通过；新G6×2",
+      "codes": [
+        "G6",
+        "G6"
+      ],
+      "micro_target": "S2",
+      "wrong_words_collected": [
+        "sitting on classroom",
+        "listening the teacher"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "G6 对比纠错再练 — 全部通过",
+      "codes": [],
+      "micro_target": "G6",
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "C3 对比纠错再练 -- 通过; 全部原致命错已清零",
+      "codes": [],
+      "micro_target": "C3",
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 1,
+      "general": 0,
+      "optimize": 0,
+      "note": "回归实战 — 新L1(yound)",
+      "codes": [
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "yound"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "L1(yound) 懂了，进入微靶验证",
+      "codes": [],
+      "micro_target": "L1",
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 1,
+      "optimize": 0,
+      "note": "微靶L1通过; G4(in library)非靶向，记",
+      "codes": [],
+      "micro_target": "L1",
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 2,
+      "general": 0,
+      "optimize": 0,
+      "source_sentence_id": "考生自写",
+      "codes": [
+        "G8",
+        "S2"
+      ],
+      "wrong_words_collected": [
+        "Why... fragment",
+        "missing that"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "G8+S2 规则辨析练习",
+      "codes": [],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 1,
+      "note": "G8+S2 规则辨析 — 全部通过",
+      "codes": [],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 5,
+      "general": 0,
+      "optimize": 1,
+      "source_sentence_id": "考生自写",
+      "codes": [
+        "L1",
+        "G6",
+        "G8",
+        "C3",
+        "L3"
+      ],
+      "wrong_words_collected": [
+        "nagetive",
+        "effects to",
+        "friends of me",
+        "friends even glued",
+        "noticing ability"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "L1+G6 对比纠错再练 — 通过",
+      "codes": [],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "G8(缺are) 对比纠错再练 — 通过",
+      "codes": [],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "C3(my friends) 通过",
+      "codes": [],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 1,
+      "optimize": 0,
+      "note": "L3(noticing) 通过 — attention time 小缺",
+      "codes": [],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 3,
+      "general": 0,
+      "optimize": 1,
+      "source_sentence_id": "KYC-0082/0083",
+      "codes": [
+        "G8",
+        "L1",
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "To deal with fragment",
+        "realiance",
+        "effert"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "G8(不定式碎片) 对比纠错再练 — 通过",
+      "codes": [],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 2,
+      "general": 0,
+      "optimize": 0,
+      "note": "L1(reliance)通过; 新G4+G6",
+      "codes": [
+        "G4",
+        "G6"
+      ],
+      "wrong_words_collected": [
+        "an serious",
+        "in young people"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 2,
+      "general": 0,
+      "optimize": 0,
+      "note": "G4通过; 新L1+L3",
+      "codes": [
+        "L1",
+        "L3"
+      ],
+      "wrong_words_collected": [
+        "acdemic",
+        "effects (for affects)"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 2,
+      "general": 1,
+      "optimize": 1,
+      "note": "L1(academic)通过; 新L1+G1",
+      "codes": [
+        "L1",
+        "G1"
+      ],
+      "wrong_words_collected": [
+        "persistant",
+        "performance need"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "G1(主谓一致) 通过",
+      "codes": [],
+      "wrong_words_collected": []
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 1,
+      "general": 0,
+      "optimize": 0,
+      "note": "L1再练结果 — 新C3(take efforts)",
+      "codes": [
+        "C3"
+      ],
+      "wrong_words_collected": [
+        "take efforts"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 1,
+      "general": 0,
+      "optimize": 0,
+      "note": "C3(make efforts)通过; 新L1(everyday)",
+      "codes": [
+        "L1"
+      ],
+      "wrong_words_collected": [
+        "everyday (adv)"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "topic": "T2",
+      "fatal": 0,
+      "general": 0,
+      "optimize": 0,
+      "note": "L1(everyday) 再练通过",
+      "codes": [],
+      "wrong_words_collected": []
     }
-  ]
+  ],
+  "severity_overrides": {
+    "G6": "!",
+    "L1": "!"
+  }
 }
